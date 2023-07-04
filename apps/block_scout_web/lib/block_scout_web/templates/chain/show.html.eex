@@ -87,6 +87,14 @@
             </div>
             <% end %>
           <% end %>
+          <div class="dashboard-banner-chart-legend-item market-cap-per-day">
+              <span class="dashboard-banner-chart-legend-label">
+              <%= gettext "Estimated circulating supply" %>
+              </span>
+              <div class="d-flex" style="height: 20px; line-height: 20px;">
+                <%= @estimated_circulating_supply %>
+              </div>
+          </div>
         </div>
       </div>
       <!-- Stats -->
@@ -140,14 +148,6 @@
             </span>
             <span class="dashboard-banner-network-stats-value" data-selector="address-count">
               <%= BlockScoutWeb.Cldr.Number.to_string!(@address_count, format: "#,###") %>
-            </span>
-          </div>
-          <div class="dashboard-banner-network-stats-item dashboard-banner-network-stats-item-4">
-            <span class="dashboard-banner-network-stats-label">
-              <%= gettext "Estimated circulating supply" %>
-            </span>
-            <span class="dashboard-banner-network-stats-value" data-selector="address-count">
-              <%= @estimated_circulating_supply %>
             </span>
           </div>
         </div>
