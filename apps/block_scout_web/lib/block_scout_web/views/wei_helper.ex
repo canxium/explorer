@@ -117,7 +117,7 @@ defmodule BlockScoutWeb.WeiHelper do
       wei
       |> Wei.to(unit)
 
-    formatted_value = CldrHelper.Number.to_string!(converted_value, format: "#,##0.####")
+    formatted_value = CldrHelper.Number.to_string!(converted_value, format: "#,##0")
 
     if Keyword.get(options, :include_unit_label, true) do
       display_unit = display_unit(unit)

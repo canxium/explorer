@@ -91,9 +91,11 @@
               <span class="dashboard-banner-chart-legend-label">
               <%= gettext "Circulating supply" %>
               </span>
-              <div class="d-flex" style="height: 20px; line-height: 20px;">
-                <%= @estimated_circulating_supply %>
-              </div>
+              <span class="dashboard-banner-chart-legend-value">
+                <div class="d-flex" style="height: 20px; line-height: 20px;">
+                  <%= @estimated_circulating_supply %>
+                </div>
+              </span>
           </div>
         </div>
       </div>
