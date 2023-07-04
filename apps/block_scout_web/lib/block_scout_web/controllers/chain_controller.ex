@@ -6,7 +6,7 @@ defmodule BlockScoutWeb.ChainController do
   alias BlockScoutWeb.API.V2.Helper
   alias BlockScoutWeb.{ChainView, Controller}
   alias Explorer.{Chain, PagingOptions, Repo}
-  alias Explorer.Chain.{Address, Block, Transaction}
+  alias Explorer.Chain.{Address, Block, Transaction, Wei}
   alias Explorer.Chain.Cache.Block, as: BlockCache
   alias Explorer.Chain.Cache.GasUsage
   alias Explorer.Chain.Cache.Transaction, as: TransactionCache
@@ -21,6 +21,7 @@ defmodule BlockScoutWeb.ChainController do
     total_gas_usage = GasUsage.total()
     block_count = BlockCache.estimated_count()
     address_count = Chain.address_estimated_count()
+    estimated_circulating_supply = Wei.hex_format(Chain.address_circulating_supply())
 
     market_cap_calculation =
       case Application.get_env(:explorer, :supply) do
@@ -57,7 +58,8 @@ defmodule BlockScoutWeb.ChainController do
       transactions_path: recent_transactions_path(conn, :index),
       transaction_stats: transaction_stats,
       block_count: block_count,
-      gas_price: Application.get_env(:block_scout_web, :gas_price)
+      gas_price: Application.get_env(:block_scout_web, :gas_price),
+      estimated_circulating_supply: estimated_circulating_supply
     )
   end
 
