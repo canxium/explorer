@@ -2,7 +2,7 @@ defmodule BlockScoutWeb.ChainController do
   use BlockScoutWeb, :controller
 
   import BlockScoutWeb.Chain, only: [paging_options: 1]
-  import BlockScoutWeb.WeiHelper, only: [format_wei_value: 2]
+  import BlockScoutWeb.WeiHelper, only: [format_cir_value: 2]
 
   alias BlockScoutWeb.API.V2.Helper
   alias BlockScoutWeb.{ChainView, Controller}
@@ -22,7 +22,7 @@ defmodule BlockScoutWeb.ChainController do
     total_gas_usage = GasUsage.total()
     block_count = BlockCache.estimated_count()
     address_count = Chain.address_estimated_count()
-    estimated_circulating_supply = format_wei_value(Chain.address_circulating_supply(), :ether)
+    estimated_circulating_supply = format_cir_value(Chain.address_circulating_supply(), :ether)
 
     market_cap_calculation =
       case Application.get_env(:explorer, :supply) do
