@@ -2,6 +2,7 @@ defmodule BlockScoutWeb.ChainController do
   use BlockScoutWeb, :controller
 
   import BlockScoutWeb.Chain, only: [paging_options: 1]
+  import BlockScoutWeb.WeiHelper, only: [format_wei_value: 2]
 
   alias BlockScoutWeb.API.V2.Helper
   alias BlockScoutWeb.{ChainView, Controller}
