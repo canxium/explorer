@@ -21,7 +21,7 @@ defmodule BlockScoutWeb.ChainController do
     total_gas_usage = GasUsage.total()
     block_count = BlockCache.estimated_count()
     address_count = Chain.address_estimated_count()
-    estimated_circulating_supply = Wei.hex_format(Chain.address_circulating_supply())
+    estimated_circulating_supply = format_wei_value(Chain.address_circulating_supply(), :ether)
 
     market_cap_calculation =
       case Application.get_env(:explorer, :supply) do
