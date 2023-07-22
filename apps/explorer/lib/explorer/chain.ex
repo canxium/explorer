@@ -230,6 +230,16 @@ defmodule Explorer.Chain do
   end
 
   @doc """
+  Counts cir supply by sum address balances.
+
+  This function should be used with caution. In larger databases, it may take a
+  while to have the return back.
+  """
+  def address_circulating_supply do
+    Repo.aggregate(Address, :sum, :fetched_coin_balance, timeout: :infinity)
+  end
+
+  @doc """
   `t:Explorer.Chain.InternalTransaction/0`s from the address with the given `hash`.
 
   This function excludes any internal transactions in the results where the

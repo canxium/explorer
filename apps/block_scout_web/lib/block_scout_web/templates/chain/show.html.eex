@@ -67,7 +67,7 @@
             <%= if Enum.member?(transaction_chart_config, :transactions_per_day) do %>
             <div class="dashboard-banner-chart-legend-item tx-per-day">
                 <span class="dashboard-banner-chart-legend-label">
-                    <%= gettext "Daily Transactions" %>
+                    <%= gettext "Daily transactions" %>
                 </span>
                 <span class="dashboard-banner-chart-legend-value" data-selector="tx_per_day">
                     <% num_of_transactions = BlockScoutWeb.Cldr.Number.to_string!(Enum.at(@transaction_stats, 0).number_of_transactions, format: "#,###") %>
@@ -87,6 +87,16 @@
             </div>
             <% end %>
           <% end %>
+          <div class="dashboard-banner-chart-legend-item market-cap-per-day">
+              <span class="dashboard-banner-chart-legend-label">
+              <%= gettext "Circulating supply" %>
+              </span>
+              <span class="dashboard-banner-chart-legend-value">
+                <div class="d-flex" style="height: 20px; line-height: 20px;">
+                  <%= @estimated_circulating_supply %>
+                </div>
+              </span>
+          </div>
         </div>
       </div>
       <!-- Stats -->
